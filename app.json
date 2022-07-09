@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "hacker_tone_ys",
+    "slug": "hacker_tone_ys",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "hacker_tone_ys"
+}
