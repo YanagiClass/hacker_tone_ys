@@ -1,0 +1,103 @@
+import React from "react";
+import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { Button, ImageBackground } from "react-native";
+import styled from "styled-components";
+
+const Selected = ({ navigation: { navigate } }) => {
+  return (
+    <Container>
+      <Mapstage>
+        <MapView
+          initialRegion={{
+            latitude: 36.6981,
+            longitude: 127.0931,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0,
+          }}
+          style={{ height: "100%" }}
+          provider={PROVIDER_GOOGLE}
+        >
+          <Marker
+            coordinate={{ latitude: 36.6981, longitude: 127.0931 }}
+            title="광덕산간이캠핑장"
+            description="천안시 광덕에 위치한 캠핑장"
+            onPress={() => navigate("Selected", { screen: "Selected" })}
+          />
+        </MapView>
+      </Mapstage>
+      <Des>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1 }}>
+            <View
+              style={{
+                backgroundColor: "white",
+                flex: 1,
+                width: "100%",
+                padding: 10,
+              }}
+            >
+              <Text>광덕산 간이캠핑장</Text>
+              <Text style={{ color: "#8d8a8a" }}>
+                충청남도 천안시 동남구 광덕면 대덕리 420-9
+              </Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: "white",
+                flex: 1,
+                width: "100%",
+                padding: 10,
+              }}
+            >
+              <Text>이용 안내</Text>
+              <Text style={{ color: "#8d8a8a" }}>
+                이용 후 쓰레기는 가져갈 것.
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              backgroundColor: "white",
+            }}
+          >
+            <View style={{ flex: 1, backgroundColor: "white" }}>
+              <Image source={require("../assets/1.png")} />
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: "white",
+            flex: 1,
+            padding: 10,
+            width: "100%",
+          }}
+        >
+          <Text>총 24시간 이용</Text>
+          <View style={{ width: "50%" }}>
+            <Button
+              title="예약하기"
+              onPress={() => Alert.alert("캠핑장으로 전화연결을 하겠습니다.")}
+            />
+          </View>
+          <Text style={{ color: "#8d8a8a" }}>오늘 16:00 ~ 내일 16:00</Text>
+        </View>
+      </Des>
+    </Container>
+  );
+};
+export default Selected;
+
+const Container = styled.View`
+  background-color: none;
+  flex: 1;
+`;
+const Mapstage = styled.View`
+  flex: 1;
+`;
+const Des = styled.View`
+  flex: 1;
+`;
